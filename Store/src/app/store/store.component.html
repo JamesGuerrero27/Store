@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="card" *ngIf ="!selectProduct;">
+        <div class="card-body">
+          <h1>Product Diunsa</h1>
+          <table  class="table table-dark table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>Product Name</th>
+                <th>Product Bran</th>
+                <th>Quantity Of Products Available</th>
+                <th>Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let stores of storeArr" [class.selected]="stores === selectProduct" (click)="onSelect(stores)">
+                <td>{{stores.nameProduct}}</td>
+                <td>{{stores.brandProduct}}</td>
+                <td >{{stores.quantityOfProductsAvailable}}</td>
+                <td>{{stores.category}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div  *ngIf ="selectProduct;" class="card">
+          <div class="card-body"> 
+              <h1 class="card-title thead-dark text-center">Details</h1>
+              <div class="card-text">
+                      <h2>Nombre: 
+                        <span>{{selectProduct.nameProduct}}</span></h2>
+                      <h2>Marca:
+                        <span>{{selectProduct.brandProduct}}</span></h2>
+                      <h2>Categoria:
+                       <span>{{selectProduct.category}}</span></h2>
+                      <h2>Cantidad disponible:
+                       <span>{{selectProduct.quantityOfProductsAvailable}}</span></h2>
+                      <button class="btn btn-primary" (click)="backToMenu();"> Volver al menu </button>
+                      <button class="btn btn-btn-danger" (click)="downQuantity();"> Reducir cantidad </button> 
+              </div>
+          </div>
+      </div>
+</body>
+</html>
